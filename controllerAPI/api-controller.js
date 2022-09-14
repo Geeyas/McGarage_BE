@@ -53,9 +53,9 @@ router.post("/signup", (req, resp) => {
     var contactNum = req.body.contactNum;
     var gender = req.body.gender;
     var email = req.body.email;
-    var passwrd = req.body.passwrd;
+    var password = req.body.password;
 
-    connection.query("INSERT INTO signup VALUES ('" + id + "','" + fullName + "','" + contactNum + "','" + gender + "','" + email + "','" + passwrd + "')", (err, records, fields) => {
+    connection.query("INSERT INTO signup VALUES ('" + id + "','" + fullName + "','" + contactNum + "','" + gender + "','" + email + "','" + password + "')", (err, records, fields) => {
         if (err) {
             console.log(err);
             console.log("Error while insertting the data");
