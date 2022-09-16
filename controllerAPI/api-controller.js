@@ -84,9 +84,10 @@ router.put("/", (req, res) => {
 })
 
 //delete
-router.delete("/:id", (req, res) => {
+router.delete("/bookappointment/:id", (req, res) => {
     connection.query("delete from bookappointment where appointmentID=" + req.params.id, (err, records, fields) => {
         if (err) {
+            console.log(err);
             console.error("Error while deleting the data");
         } else {
             res.send({ delete: "Delete Success" });
