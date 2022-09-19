@@ -1,8 +1,6 @@
 var express = require("express");
 var app = express();
 
-
-
 var mcGarageAPI = require("./controllerAPI/api-controller");
 
 var bodyparser = require('body-parser');

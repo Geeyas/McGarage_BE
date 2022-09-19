@@ -15,6 +15,18 @@ router.get("/bookappointment", (req, res) => {
     })
 })
 
+//editAppointment => fetchin data
+router.get("/bookappointment/search/:appID", (req, res) => {
+    connection.query("SELECT * from bookappointment where appointmentID=('" + req.params.appID + "')", (err, records, fields) => {
+        if (err) {
+            console.log(req.params.fullName);
+            console.error("Error while fetching data");
+        } else {
+            res.send(records);
+        }
+    })
+})
+
 router.get("/signup", (req, res) => {
     connection.query("SELECT * FROM signup", (err, records, fields) => {
         if (err) {
@@ -34,8 +46,10 @@ router.post("/bookappointment", (req, resp) => {
     var email = req.body.email;
     var appointment = req.body.appointment;
     var date = req.body.onDate;
+    var time = req.body.onTime;
+    var dateCheck = req.body.dateCheck;
 
-    connection.query("INSERT INTO bookappointment VALUES ('" + id + "','" + name + "','" + number + "','" + email + "','" + appointment + "','" + date + "')", (err, records, fields) => {
+    connection.query("INSERT INTO bookappointment VALUES ('" + id + "','" + name + "','" + number + "','" + email + "','" + appointment + "','" + date + "', '" + time + "', '" + dateCheck + "')", (err, records, fields) => {
         if (err) {
             console.log(err);
             console.log("Error while insertting the data");
@@ -54,8 +68,9 @@ router.post("/signup", (req, resp) => {
     var gender = req.body.gender;
     var email = req.body.email;
     var password = req.body.password;
+    var check = req.body.check;
 
-    connection.query("INSERT INTO signup VALUES ('" + id + "','" + fullName + "','" + contactNum + "','" + gender + "','" + email + "','" + password + "')", (err, records, fields) => {
+    connection.query("INSERT INTO signup VALUES ('" + id + "','" + fullName + "','" + contactNum + "','" + gender + "','" + email + "','" + password + "','" + check + "')", (err, records, fields) => {
         if (err) {
             console.log(err);
             console.log("Error while insertting the data");
@@ -66,21 +81,25 @@ router.post("/signup", (req, resp) => {
     })
 })
 
+router.put("/bookappointment/update", (req, resp) => {
+    var id = req.body.appointmentID;
+    var name = req.body.fullName;
+    var number = req.body.contactNum;
+    var email = req.body.email;
+    var appointment = req.body.appointment;
+    var date = req.body.onDate;
+    var time = req.body.onTime;
+    var dateCheck = req.body.dateCheck;
 
-// update
-router.put("/", (req, res) => {
-    var showtime_ID = req.body.showtime_ID;
-    var time = req.body.time;
-    var location = req.body.location;
-    // there is 4 data in the showtime table and out of which only two data 'time' and 'location' can be edited/updated
-    connection.query("UPDATE showtime SET time='" + time + "', location='" + location + "' where showtime_ID=" + showtime_ID,
-        (err, result) => {
-            if (err) {
-                console.error("Error while Updating the data" + err);
-            } else {
-                res.send({ update: "Update success" });
-            }
-        })
+    connection.query("UPDATE bookappointment SET fullName='" + name + "',contactNum='" + number + "',email='" + email + "',appointment='" + appointment + "',onDate='" + date + "',onTime='" + time + "',dateCheck='" + dateCheck + "' WHERE appointmentID='" + id + "'", (err, records, fields) => {
+        if (err) {
+            console.log(err);
+            console.log("Error while insertting the data");
+        }
+        else {
+            resp.send({ insert: "insert success" });
+        }
+    })
 })
 
 //delete
