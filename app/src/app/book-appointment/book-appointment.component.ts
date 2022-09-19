@@ -61,10 +61,8 @@ export class BookAppointmentComponent implements OnInit {
         }
       }
       this.allData = products;
-      console.log(this.allData);
       return products;
     })).subscribe((response) => {
-      // console.log(response);
     })
   }
 
@@ -110,7 +108,6 @@ export class BookAppointmentComponent implements OnInit {
     else {
       for (let i = 0; i < this.allData.length; i++) {
         this.dateArr.push(this.allData[i].dateCheck);
-        console.log(this.allData[i].dateCheck);
       }
 
       const headers = new HttpHeaders();
@@ -152,15 +149,6 @@ export class BookAppointmentComponent implements OnInit {
           console.log(err);
         })
       }
-
-
-      // for (let i = 0; i < this.dateArr.length; i++) {
-      //   if (this.dateArr[i] === (this.date) && this.timeArr[i].exists(this.time)) {
-      //     this.successMsg = "Time slot not available";
-      //     return;
-      //   } else {
-
-      //   }
     }
   }
 
@@ -173,52 +161,8 @@ export class BookAppointmentComponent implements OnInit {
         }
       }
       this.allData = products;
-      console.log(this.allData);
       return products;
     })).subscribe((response) => {
-      // console.log(response);
     })
   }
 }
-
-
-//   private async dataPush() {
-//     const header = new HttpHeaders({ 'myHeader': 'Appointment Data' });
-//     const appointmentID = this.id;
-//     const fullName = this.name;
-//     const contactNum = this.number;
-//     const email = this.email;
-//     const appointment = this.appointment;
-//     const onDate = this.date;
-//     var onTime = this.time;
-//     await this.http.post(this.url, { appointmentID, fullName, contactNum, email, appointment, onDate, onTime }, { headers: header }).subscribe((response) => {
-//       console.log(response);
-//       this.name = "";
-//       this.number = "";
-//       this.email = "";
-//       this.appointment = ""
-//       this.date = "";
-//       this.time = "";
-//       this.errMsgName = "";
-//       this.errMsgNumber = "";
-//       this.errMsgApp = "";
-//       this.errMsgEmail = "";
-//       this.errMsgDate = "";
-//       this.successMsg = "Booked Successfully";
-//     }, (err) => {
-//       this.successMsg = "Error in booking appointment. Please Try again!!"
-//       console.log(err);
-//     })
-//   }
-// }
-
-
-// for (let data of this.allData) {
-  //   if (this.date == data.onDate) {
-  //     if (this.time !== data.onTime) {
-  //     } else {
-  //       this.successMsg = "Slot booked";
-  //     }
-  //   } else {
-  //   }
-  // }

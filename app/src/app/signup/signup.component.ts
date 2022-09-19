@@ -9,6 +9,7 @@ import { map } from 'rxjs';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
   url: string = "/api/signup";
 
   DayDAte = new Date();
