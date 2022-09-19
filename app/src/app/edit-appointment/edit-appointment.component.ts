@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditAppointmentComponent implements OnInit {
 
-  urlSearch: string = "http://localhost:3333/api/bookappointment/search/";
-  urlUpdate: string = "http://localhost:3333/api/bookappointment/update/";
+  urlSearch: string = "/api/bookappointment/search/";
+  urlUpdate: string = "/api/bookappointment/update/";
 
   isShowSearch: boolean = true;
   isShowEdit: boolean = false;

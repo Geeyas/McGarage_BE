@@ -1,10 +1,11 @@
 {
-    "/posts": {
-      "target": "https://localhost:4200/",
-      "secure": true,
-      "pathRewrite": {
-      "^/posts": ""
-    },
-      "changeOrigin": true
+    "/api/*": {
+      "target": "http://[::1]:8000",
+      "secure": false,
+      "changeOrigin": true,
+        "logLevel": "debug",
+        "headers": {
+            "Connection": "keep-alive"
+        }
     }
-  }
+}

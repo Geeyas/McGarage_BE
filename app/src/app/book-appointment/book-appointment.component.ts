@@ -13,7 +13,7 @@ export class BookAppointmentComponent implements OnInit {
   appID: boolean = false;
 
 
-  url: string = "http://localhost:3333/api/bookappointment";
+  url: string = "/api/bookappointment";
 
   DayDAte = new Date();
   id: number = this.DayDAte.getTime();

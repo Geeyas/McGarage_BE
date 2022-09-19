@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   messageErr: string = "";
   messageSucc: string = "";
   password: string = "";
-  url: string = "http://localhost:3333/api/signup";
+  url: string = "/api/signup";
 
   allData: any = [];
   length: number = 0;
