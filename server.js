@@ -13,5 +13,4 @@ app.use(cors());
 app.use("/api", mcGarageAPI);
 
 http.createServer(app).listen(80);
-// app.listen(3333);
 console.log("Server is Up and  running on Port 80");
