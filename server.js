@@ -12,7 +12,8 @@ app.use(cors());
 
 app.use("/api", mcGarageAPI);
 
-http.createServer(app).listen(3333);
+// http.Server
+http.Server(app).listen(3333);
 // app.listen(3333);
 console.log("Server is Up and  running on 3333 Port");
 console.log("Visit:  localhost:3333/api");
