@@ -15,7 +15,7 @@ app.use(express.static(process.cwd()+"/app/build/"));
 
 app.use("/api", mcGarageAPI);
 
-app.get('/', (req,res) => {
+app.get('/*', (req,res) => {
     res.sendFile(process.cwd()+"/app/build/index.html")
 });
 
