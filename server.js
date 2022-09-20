@@ -19,9 +19,5 @@ app.get('/*', (req,res) => {
     res.sendFile(process.cwd()+"/app/build/index.html")
 });
 
-router.get('*', function(req, res) {
-    res.sendFile(process.cwd()+"/app/build/index.html")
- });
-
 http.createServer(app).listen(8000);
 console.log("Server is Up and  running on Port 8000");
