@@ -11,13 +11,13 @@ app.use(bodyparser.urlencoded({ extended: false }));
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '/docs')));
+app.use(express.static(process.cwd()+"/app/build/"));
 
 app.use("/api", mcGarageAPI);
-app.use('/*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/docs/index.html'));
-})
 
+app.get('/', (req,res) => {
+    res.sendFile(process.cwd()+"/app/build/index.html")
+});
 
 app.listen(8000);
 // http.createServer(app).listen(8000);
