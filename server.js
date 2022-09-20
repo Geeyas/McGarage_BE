@@ -1,16 +1,24 @@
 var express = require("express");
 var app = express();
+var cors = require('cors');
 var http = require('http');
+const path = require('path');
 var mcGarageAPI = require("./controllerAPI/api-controller");
 
 var bodyparser = require('body-parser');
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
-var cors = require('cors');
 app.use(cors());
 
-app.use("/api", mcGarageAPI);
+app.use(express.static(path.join(__dirname, '/docs')));
 
-http.createServer(app).listen(8000);
+app.use("/api", mcGarageAPI);
+app.use('/*', function (req, res) {
+    res.sendFile(path.join(__dirname + '/docs/index.html'));
+})
+
+
+app.listen(8000);
+// http.createServer(app).listen(8000);
 console.log("Server is Up and  running on Port 8000");
