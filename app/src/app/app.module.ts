@@ -80,7 +80,7 @@ const routes: Routes = [
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]
