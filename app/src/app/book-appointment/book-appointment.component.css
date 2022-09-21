@@ -39,6 +39,10 @@ button:active {
 }
 
 @media only screen and (max-width: 600px) {
+    .text-center div {
+        margin-left: -80%;
+    }
+
     input, select {
         margin-left: -40%;
     }
@@ -59,6 +63,7 @@ button:active {
 }
 
 @media only screen and (max-width:601px) and (max-width: 1200px) {
+
     input, select {
         margin-left: -40%;
     }
