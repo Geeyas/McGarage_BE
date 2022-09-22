@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   id: number;
   errorMessage: string = '';
   url: string = "/api/bookappointment/";
+  urlAdmin: string = "/api/adminAccess";
   allData = [];
 
   constructor(private http: HttpClient, private router: Router) { }

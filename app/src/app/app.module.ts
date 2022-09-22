@@ -26,6 +26,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './authGuard.service';
 import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
+import { AdminAccessComponent } from './admin-access/admin-access.component';
 
 const routes: Routes = [
 
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: "quote", component: GetQuoteComponent },
   { path: "login", component: LoginComponent },
   { path: "admin", component: AdminComponent, canActivate: [AuthGuardService] },
+  { path: "adminAccess", component: AdminAccessComponent, canActivate: [AuthGuardService] },
   { path: "terms", component: TermsComponent },
   { path: "privacy", component: PrivacyPolicyComponent },
   { path: "bookAppointment", component: BookAppointmentComponent },
@@ -74,6 +76,7 @@ const routes: Routes = [
     TermsComponent,
     PrivacyPolicyComponent,
     EditAppointmentComponent,
+    AdminAccessComponent,
   ],
   imports: [
     BrowserModule,

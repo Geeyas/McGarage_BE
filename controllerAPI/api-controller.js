@@ -37,6 +37,16 @@ router.get("/signup", (req, res) => {
     })
 })
 
+router.get("/adminAccess", (req, res) => {
+    connection.query("SELECT * FROM adminAccess", (err, records, fields) => {
+        if (err) {
+            res.send("Error in fetching data");
+        } else {
+            res.send(records);
+        }
+    })
+})
+
 
 //insert data
 router.post("/bookappointment", (req, resp) => {
@@ -56,6 +66,20 @@ router.post("/bookappointment", (req, resp) => {
         }
         else {
             resp.send({ insert: "insert success" });
+        }
+    })
+})
+
+
+router.post("/adminAccess", (req, res) => {
+    var id = req.body.adminID;
+    var email = req.body.email;
+
+    connection.query("INSERT INTO adminAccess values ('" + id + "', '" + email + "')", (err, records, fields) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send("insert success");
         }
     })
 })
@@ -105,6 +129,17 @@ router.put("/bookappointment/update", (req, resp) => {
 //delete
 router.delete("/bookappointment/:id", (req, res) => {
     connection.query("delete from bookappointment where appointmentID=" + req.params.id, (err, records, fields) => {
+        if (err) {
+            console.log(err);
+            console.error("Error while deleting the data");
+        } else {
+            res.send({ delete: "Delete Success" });
+        }
+    })
+})
+
+router.delete("/adminAccess/:email", (req, res) => {
+    connection.query("delete from adminAccess where email=('" + req.params.email + "')", (err, records, fields) => {
         if (err) {
             console.log(err);
             console.error("Error while deleting the data");

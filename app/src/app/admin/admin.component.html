@@ -14,6 +14,7 @@
             <ol>
                 <li><a [routerLink]="['/home']" style="color:#05337e;">Home</a></li>
                 <li><button (click)="getData()">Admin Panel</button> </li>
+                <li><button [routerLink]="['/adminAccess']">Admin Access</button> </li>
             </ol>
         </div>
     </nav>
@@ -54,7 +55,7 @@
                         placeholder="Appointment ID to Delete" required [(ngModel)]="id">
                     <button type="submit" class="deleteBtn" (click)="delete()">Delete &nbsp;<i
                             class="bi bi-trash"></i></button>
-                    <button type="submit" class="deleteBtn" (click)="logOut()">Log Out &nbsp;&nbsp;</button>
+                    <button type="submit" class="deleteBtn" (click)="logOut()">&nbsp;Log Out &nbsp;&nbsp;</button>
                 </div>
             </div>
         </form>

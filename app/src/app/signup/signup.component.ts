@@ -39,7 +39,6 @@ export class SignupComponent implements OnInit {
   async ngOnInit() {
     this.http.get(this.url).subscribe((res) => {
       this.allData = res;
-      console.log(this.allData);
     }, (err) => {
       console.log(err);
     });
