@@ -72,6 +72,8 @@ export class AdminAccessComponent implements OnInit {
   async removeAccess() {
     if (!this.emailRm) {
       this.errMsgAdminRm = "Field is empty";
+    } else if (this.emailRm === 'mcgarage6060@gmail.com') {
+      this.errMsgAdminRm = "Main Admin cannot be deleted";
     } else {
       await this.http.delete((this.urlAdmin + this.emailRm)).subscribe(res => {
         this.errMsgAdminRm = "Delete successfully";

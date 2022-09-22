@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   messageSucc: string = "";
   password: string = "";
   url: string = "/api/signup";
+  urlAdmin: string = "/api/adminAccess";
+
 
   allData: any = [];
   length: number = 0;
@@ -35,6 +37,8 @@ export class LoginComponent implements OnInit {
   logged = document.querySelector('logged');
   loggin = document.querySelector('.logging');
 
+  allAdminData: any = [];
+  adminAccess = [];
 
   adminUsername: string = "mcgarage6060@gmail.com";
   adminPassword: string = "admin";
@@ -62,9 +66,16 @@ export class LoginComponent implements OnInit {
       this.isShowLogOut = true;
       this.isShowLogIn = false;
     }
+
+    await this.http.get(this.urlAdmin, { headers: header }).subscribe((res) => {
+      this.allAdminData = res;
+      this.allAdminData.forEach((data) => {
+        this.adminAccess.push(data.email);
+      })
+    });
   }
 
-  login() {
+  async login() {
     if (!this.username) {
       this.messageErr = "Email must be entered";
       return;
@@ -81,24 +92,29 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('user_type', 'admin');
           this.router.navigate(['/admin']);
         } else {
-          //user logged in
-          this.messageSucc = "Logged in Successfully";
-          setTimeout(() => {
-            this.loggedEmail = this.username;
-            this.loggedUser = this.fullName[index];
-            this.userAvatar = `https://joeschmoe.io/api/v1/${this.loggedUser}`;
-            this.isShowLogOut = true;
-            this.isShowLogIn = false;
-            localStorage.setItem('email', this.loggedEmail);
-            localStorage.setItem('user', this.loggedUser);
-          }, 1000);
+          if (this.adminAccess.includes(this.username)) {
+            this.messageSucc = "Logged in Successfully";
+            sessionStorage.setItem('user_type', 'admin');
+            this.router.navigate(['/admin']);
+            return;
+          } else {
+            //user logged in
+            this.messageSucc = "Logged in Successfully";
+            setTimeout(() => {
+              this.loggedEmail = this.username;
+              this.loggedUser = this.fullName[index];
+              this.userAvatar = `https://joeschmoe.io/api/v1/${this.loggedUser}`;
+              this.isShowLogOut = true;
+              this.isShowLogIn = false;
+              localStorage.setItem('email', this.loggedEmail);
+              localStorage.setItem('user', this.loggedUser);
+            }, 1000);
+          }
         }
       } else {
         this.username = "";
         this.password = "";
-        setTimeout(() => {
-          this.messageErr = "Logged in Failed";
-        }, 1000);
+        this.messageErr = "Logged in Failed";
       }
     }
   }
