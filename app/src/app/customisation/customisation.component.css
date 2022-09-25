@@ -1,4 +1,30 @@
 iframe {
-    width: 900px;
-    height: 500px;
+    margin: 5%;
+    width: 1200px;
+    height: 800px;
+}
+
+#configurator h1 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width:600px) {
+    iframe {
+        margin-left: 15%;
+        width: auto;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width:601px) and (max-width: 1200px) {
+    iframe {
+        margin-left: 15%;
+        width: 900px;
+        height: 500px;
+    }
 }
