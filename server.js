@@ -19,5 +19,7 @@ app.get('/*', (req,res) => {
     res.sendFile(process.cwd()+"/app/build/index.html")
 });
 
-http.createServer(app).listen(8000);
+const port = process.env.port || 8000
+
+http.createServer(app).listen(port);
 console.log("Server is Up and  running on Port 8000");
