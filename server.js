@@ -4,6 +4,7 @@ var cors = require('cors');
 var http = require('http');
 const path = require('path');
 var mcGarageAPI = require("./controllerAPI/api-controller");
+require("dotenv").config();
 
 var bodyparser = require('body-parser');
 app.use(bodyparser.json());
