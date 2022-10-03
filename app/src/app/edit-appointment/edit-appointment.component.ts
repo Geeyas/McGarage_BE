@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+
 
 @Component({
   selector: 'app-edit-appointment',
@@ -98,6 +100,17 @@ export class EditAppointmentComponent implements OnInit {
             this.isShowEdit = false;
             this.nameSearch = "";
           }, 1500)
+          emailjs.send("service_54de1kl", "template_5wfpseg", {
+            name: this.name,
+            email: this.email,
+            appointment: this.appointment,
+            date: this.date,
+            time: this.time,
+            appointmentID: this.appointmentID
+          }, "mk5iIxu0NFYaVopqn").then((result: EmailJSResponseStatus) => {
+          }, (error) => {
+            this.successMsg = "Error in sending Email.";
+          });
 
         },
         (err) => { this.errMsgApp = "Error In Updating data" });

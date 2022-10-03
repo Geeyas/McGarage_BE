@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { map } from 'rxjs';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+
 @Component({
   selector: 'app-book-appointment',
   templateUrl: './book-appointment.component.html',
@@ -144,9 +146,19 @@ export class BookAppointmentComponent implements OnInit {
           this.appointmentID = appointmentID
           this.bookForm = false;
           this.appID = true;
+          emailjs.send("service_54de1kl", "template_5wfpseg", {
+            name: fullName,
+            email: email,
+            appointment: appointment,
+            date: onDate,
+            time: onTime,
+            appointmentID: appointmentID
+          }, "mk5iIxu0NFYaVopqn").then((result: EmailJSResponseStatus) => {
+          }, (error) => {
+            this.successMsg = "Error in sending Email.";
+          });
         }, (err) => {
           this.successMsg = "Error in booking appointment. Please Try again!!"
-          console.log(err);
         })
       }
     }
