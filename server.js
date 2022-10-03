@@ -20,7 +20,7 @@ app.get('/*', (req,res) => {
     res.sendFile(process.cwd()+"/app/build/index.html")
 });
 
-const port = process.env.port || 8000
+const port = process.env.port || 80
 
 http.createServer(app).listen(port);
-console.log("Server is Up and  running on Port 8000");
+console.log("Server is Up and  running on Port 80");
