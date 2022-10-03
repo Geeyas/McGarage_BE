@@ -92,9 +92,9 @@ router.post("/signup", (req, resp) => {
     var gender = req.body.gender;
     var email = req.body.email;
     var password = req.body.password;
-    var check = req.body.check;
+    var checks = req.body.check;
 
-    connection.query("INSERT INTO signup VALUES ('" + id + "','" + fullName + "','" + contactNum + "','" + gender + "','" + email + "','" + password + "','" + check + "')", (err, records, fields) => {
+    connection.query("INSERT INTO signup VALUES ('" + id + "','" + fullName + "','" + contactNum + "','" + gender + "','" + email + "','" + password + "','" + checks + "')", (err, records, fields) => {
         if (err) {
             console.log(err);
             console.log("Error while insertting the data");
@@ -104,6 +104,23 @@ router.post("/signup", (req, resp) => {
         }
     })
 })
+
+router.put("/resetPassword", (req, resp) => {
+    var email = req.body.email;
+    var password = req.body.password;
+    var checks = req.body.check;
+
+    connection.query("UPDATE signup SET password='" + password + "',checks='" + checks + "' WHERE email='" + email + "'", (err, records, fields) => {
+        if (err) {
+            console.log(err);
+            console.log("Error while resetting the password");
+        }
+        else {
+            resp.send({ insert: "Password Reset Success" });
+        }
+    })
+})
+
 
 router.put("/bookappointment/update", (req, resp) => {
     var id = req.body.appointmentID;

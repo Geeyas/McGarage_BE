@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         this.fullName.push(data.fullName);
         this.email.push(data.email);
         this.passwrd.push(data.password);
-        this.checkArr.push(data.check);
+        this.checkArr.push(data.checks);
       })
     }, (err) => {
       console.log(err);

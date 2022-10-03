@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './authGuard.service';
 import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 import { AdminAccessComponent } from './admin-access/admin-access.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
 
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: "customisation", component: CustomisationComponent },
   { path: "signup", component: SignupComponent },
   { path: "forgotPassword", component: ForgotPasswordComponent },
+  { path: "resetPassword", component: ResetPasswordComponent },
   { path: "bookAppointment", component: BookAppointmentComponent },
   { path: "quote", component: GetQuoteComponent },
   { path: "login", component: LoginComponent },
@@ -77,6 +79,7 @@ const routes: Routes = [
     PrivacyPolicyComponent,
     EditAppointmentComponent,
     AdminAccessComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
