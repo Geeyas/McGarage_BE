@@ -106,17 +106,18 @@ router.post("/signup", (req, resp) => {
 })
 
 router.put("/resetPassword", (req, resp) => {
-    var email = req.body.email;
+    var emails = req.body.email;
     var password = req.body.password;
     var checks = req.body.check;
 
-    connection.query("UPDATE signup SET password='" + password + "',checks='" + checks + "' WHERE email='" + email + "'", (err, records, fields) => {
+    connection.query("UPDATE signup SET password='" + password + "',checks='" + checks + "' WHERE email='" + emails + "'", (err, records, fields) => {
         if (err) {
             console.log(err);
             console.log("Error while resetting the password");
         }
         else {
             resp.send({ insert: "Password Reset Success" });
+            console.log(password, checks, email);
         }
     })
 })
