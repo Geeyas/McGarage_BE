@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,8 +19,16 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  reset() {
-
+  async reset() {
+    this.messageSucc = "Sending Message...."
+    await emailjs.send("service_54de1kl", "template_sbbgu6d", {
+      email: this.email,
+    }, "mk5iIxu0NFYaVopqn").then((result: EmailJSResponseStatus) => {
+      this.email = "";
+      this.messageSucc = "Message Sent Successfully!!";
+    }, (error) => {
+      this.messageErr = "Error in sending message. Please try again";
+    });
   }
 
   clear() {
