@@ -125,7 +125,7 @@ export class BookAppointmentComponent implements OnInit {
       const dateCheck = 'Date:' + this.date + ' | Time: ' + this.time;
 
       if (this.dateArr.includes(dateCheck)) {
-        this.successMsg = "Time slot booked!"
+        this.successMsg = "Already booked!! Select next Time"
         return;
       } else {
         this.successMsg = "Booking...";
