@@ -12,12 +12,12 @@ app.use(bodyparser.urlencoded({ extended: false }));
 
 app.use(cors());
 
-app.use(express.static(process.cwd()+"/app/build/"));
+app.use(express.static(process.cwd() + "/app/build/"));
 
 app.use("/api", mcGarageAPI);
 
-app.get('/*', (req,res) => {
-    res.sendFile(process.cwd()+"/app/build/index.html")
+app.get('/*', (req, res) => {
+    res.sendFile(process.cwd() + "/app/build/index.html")
 });
 
 const port = process.env.port || 80

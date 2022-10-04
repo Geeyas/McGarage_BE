@@ -105,24 +105,6 @@ router.post("/signup", (req, resp) => {
     })
 })
 
-router.put("/resetPassword", (req, resp) => {
-    var emails = req.body.email;
-    var password = req.body.password;
-    var checks = req.body.check;
-
-    connection.query("UPDATE signup SET password='" + password + "',checks='" + checks + "' WHERE email='" + emails + "'", (err, records, fields) => {
-        if (err) {
-            console.log(err);
-            console.log("Error while resetting the password");
-        }
-        else {
-            resp.send({ insert: "Password Reset Success" });
-            console.log(password, checks, email);
-        }
-    })
-})
-
-
 router.put("/bookappointment/update", (req, resp) => {
     var id = req.body.appointmentID;
     var name = req.body.fullName;
@@ -140,6 +122,22 @@ router.put("/bookappointment/update", (req, resp) => {
         }
         else {
             resp.send({ insert: "insert success" });
+        }
+    })
+})
+
+router.put("/forgotPassword/resetPassword", (req, resp) => {
+    var email = req.body.email;
+    var password = req.body.password;
+    var checks = req.body.checks;
+
+    connection.query("UPDATE signup SET password='" + password + "',checks='" + checks + "' WHERE  email='" + email + "'", (err, records, fields) => {
+        if (err) {
+            console.log(err);
+            console.log("Error while updating password");
+        }
+        else {
+            resp.send({ insert: "update successfull" });
         }
     })
 })
