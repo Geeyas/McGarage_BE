@@ -36,7 +36,10 @@ export class ResetPasswordComponent implements OnInit {
 
   }
   async reset() {
-    if (this.emailCk.includes(this.email)) {
+    if (this.password == "") {
+      this.message = "Password must be entered";
+      return;
+    } else if (this.emailCk.includes(this.email)) {
       var checks = this.email + this.password;
       await this.http.put(this.url, { email: this.email, password: this.password, checks: checks }).subscribe(
         (res) => {
@@ -47,7 +50,7 @@ export class ResetPasswordComponent implements OnInit {
         }
       )
     } else {
-      this.message = "No such email ID has been registered";
+      this.message = "No such email id found";
     }
   }
   clear() {
