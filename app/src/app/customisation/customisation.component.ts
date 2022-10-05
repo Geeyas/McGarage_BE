@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-customisation',
   templateUrl: './customisation.component.html',
@@ -21,9 +22,13 @@ export class CustomisationComponent implements OnInit {
   carType: string = "";
   carColor: string = "";
 
-  constructor() { }
+  // constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  info() {
+    window.alert("This customisation will allow you to see the different models of car wrapped in different color from different angle. Car color seen in 3d models might be different from real life. Also, you can see whole car wrapped with the color you chose.")
   }
 
   carModel(newValue: any) {

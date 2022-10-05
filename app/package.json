@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-extensions/dialogs": "^1.0.0",
     "@angular-three/core": "^6.0.1",
     "@angular/animations": "^14.1.0",
     "@angular/common": "^14.1.0",
@@ -20,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
     "@emailjs/browser": "^3.6.2",
+    "@material/dialog": "^14.0.0",
     "angular-video-background": "^1.0.3",
     "emailjs": "^4.0.1",
     "json-server": "^0.17.0",
