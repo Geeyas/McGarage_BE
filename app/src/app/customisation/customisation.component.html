@@ -20,6 +20,31 @@
 </div>
 <!-- End Breadcrumbs -->
 <main>
+    <div class="choice-section">
+        <div class="dropdown">
+            <select class="form-control" (change)="carModel($event)" name="carType" id="carType"
+                [(ngModel)]="carType">
+                <option value="suv">SUV(Sports Utility Vehicle)</option>
+                <option value="sedan">Sedan</option>
+                <option value="hatch">Hatch</option>
+                <option value="pickup">Pick-Up</option>
+            </select>
+        </div>
+        <div class="radio_button_section">
+            <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="white" name="carType"
+                value="white" class="form-control height_30px space" />
+            <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="green" name="carType"
+                value="green" class="form-control height_30px space" />
+            <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="blue" name="carType"
+                value="blue" class="form-control height_30px space" />
+            <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="black" name="carType"
+                value="black" class="form-control height_30px space" />
+            <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="red" name="carType" value="red"
+                class="form-control height_30px space" />
+            <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="yellow" name="carType"
+                value="yellow" class="form-control height_30px space" />
+        </div>
+    </div>
     <div class="full_container">
         <div>
             <h1 *ngIf="suv">Suv</h1>
@@ -208,32 +233,9 @@
                 </div>
             </div>
         </div>
-        <div class="choice-section">
-            <div class="dropdown_container">
-                <select class="form-control dropdown" (change)="carModel($event)" name="carType" id="carType"
-                    [(ngModel)]="carType">
-                    <option value="suv">SUV(Sports Utility Vehicle)</option>
-                    <option value="sedan">Sedan</option>
-                    <option value="hatch">Hatch</option>
-                    <option value="pickup">Pick-Up</option>
-                </select>
-            </div>
-            <div class="radio_button_section">
-                <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="white" name="carType"
-                    value="white" class="form-control height_30px space" />
-                <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="green" name="carType"
-                    value="green" class="form-control height_30px space" />
-                <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="blue" name="carType"
-                    value="blue" class="form-control height_30px space" />
-                <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="black" name="carType"
-                    value="black" class="form-control height_30px space" />
-                <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="red" name="carType" value="red"
-                    class="form-control height_30px space" />
-                <input [(ngModel)]="carColor" (change)="color($event)" type="radio" id="yellow" name="carType"
-                    value="yellow" class="form-control height_30px space" />
-            </div>
-        </div>
+       
     </div>
 </main>
 <br />
 <app-footer></app-footer>
+
